@@ -1,0 +1,56 @@
+<html>
+<head>
+	<title>EvenODD_finder_by_sneha</title>
+	<style>
+		* { text-align: center; font-size: 50px; }
+		body { background-color: azure; }
+		.btn { width: 25%; border-radius: 20px; }
+		.btn:hover { color: white; background-color: black; }
+	</style>
+</head>
+<body>
+	<h1>EVEN ODD FINDER</h1>
+	<form onsubmit="check(event)">
+		<input type="number" id="n1" placeholder="enter integer" />
+		<br /><br />
+		<input type="submit" value="M1" class="btn" />
+		<input type="submit" value="M2" class="btn" />
+		<input type="submit" value="M3" class="btn" />
+	</form>
+	<h2 id="msg"></h2>
+
+	<script>
+		function check(event) {
+			event.preventDefault();
+			let n1 = document.getElementById("n1");
+			let msg = document.getElementById("msg");
+			let action = document.activeElement.value;
+
+			if (n1.value === "") {
+				alert("enter integer");
+				n1.focus();
+				msg.innerHTML = "";
+				return;
+			}
+
+			let num = parseInt(n1.value);
+			let r = "";
+
+			if (action === "M1") {
+				r = (num % 2 === 0) ? "even" : "odd";
+				msg.innerHTML = "M1 → " + r;
+			} else if (action === "M2") {
+				switch (num % 2) {
+					case 0: r = "even"; break;
+					case 1: r = "odd"; break;
+					case -1: r = "odd"; break;
+				}
+				msg.innerHTML = "M2 → " + r;
+			} else if (action === "M3") {
+				r = num % 2 === 0 ? "EVEN" : "ODD";
+				msg.innerHTML = "M3 → " + r;
+			}
+		}
+	</script>
+</body>
+</html>
